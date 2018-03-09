@@ -1,0 +1,26 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="br.com.prot.orm.ui.fragment.RecoveryFragment">
+
+    <TextView
+        android:id="@+id/txt_msg_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text=""
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <ListView
+        android:id="@+id/lista_clientes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="16dp"
+        android:scrollbarStyle="insideOverlay"
+        android:scrollbars="none"
+        android:dividerHeight="0dp"
+        android:divider="#ffffff">
+
+    </ListView>
+</RelativeLayout>
