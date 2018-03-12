@@ -19,11 +19,20 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:inputType="number"
-        android:imeOptions="actionDone"
+        android:imeOptions="actionNext"
         android:layout_marginLeft="8dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:hint="Idade:" />
+
+    <EditText
+        android:id="@+id/edt_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:imeOptions="actionDone"
+        android:hint="E-mail:"
+        android:layout_below="@+id/edt_nome"/>
 
     <Button
         android:id="@+id/btn_save"
@@ -32,6 +41,6 @@
         android:drawableLeft="@drawable/ic_save_black_24dp"
         android:drawablePadding="2dp"
         android:text="SAVE"
-        android:layout_below="@+id/edt_idade"
+        android:layout_below="@+id/edt_email"
         android:layout_alignParentRight="true"/>
 </RelativeLayout>
