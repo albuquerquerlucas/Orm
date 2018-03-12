@@ -16,7 +16,7 @@ import br.com.prot.orm.util.Constants;
 
 public class RegisterFragment extends Fragment implements View.OnClickListener {
 
-    private EditText edtNome, edtIdade;
+    private EditText edtNome, edtIdade, edtEmail;
     private Button btnSave;
     private ClienteDAO dao = null;
 
@@ -33,6 +33,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
     private void initUi(View view){
         this.edtNome = (EditText) view.findViewById(R.id.edt_nome);
         this.edtIdade = (EditText) view.findViewById(R.id.edt_idade);
+        this.edtEmail = (EditText) view.findViewById(R.id.edt_email);
         this.btnSave = (Button) view.findViewById(R.id.btn_save);
 
         configComponents();
@@ -44,6 +45,8 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
         this.edtNome.setSelection(edtNome.getText().length());
         this.edtIdade.setText("");
         this.edtIdade.setSelection(edtIdade.getText().length());
+        this.edtEmail.setText("");
+        this.edtEmail.setSelection(edtEmail.getText().length());
 
         this.btnSave.setOnClickListener(RegisterFragment.this);
     }
@@ -59,10 +62,12 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
 
         if(this.edtNome.getText().toString().equals("")){this.edtNome.setError(Constants.HINT_INPUT_NOME); return;}
         if(this.edtIdade.getText().toString().equals("")){this.edtIdade.setError(Constants.HINT_INPUT_IDADE); return;}
+        if(this.edtEmail.getText().toString().equals("")){this.edtEmail.setError(Constants.HINT_INPUT_EMAIL); return;}
 
         Cliente cliente = new Cliente();
         cliente.setNome(edtNome.getText().toString());
         cliente.setIdade(Integer.parseInt(edtIdade.getText().toString()));
+        cliente.setEmail(edtEmail.getText().toString());
         cliente.setComentario("");
 
         boolean status = this.dao.insert(cliente);
