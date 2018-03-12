@@ -20,6 +20,9 @@ public class Cliente implements Serializable {
     @DatabaseField
     private int idade;
 
+    @DatabaseField
+    private String comentario;
+
     public Cliente() {
     }
 
@@ -51,5 +54,13 @@ public class Cliente implements Serializable {
 
     public void setIdade(int idade) {
         this.idade = idade;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
 }
