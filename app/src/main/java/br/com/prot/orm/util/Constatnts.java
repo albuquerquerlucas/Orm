@@ -8,6 +8,8 @@ public class Constatnts {
 
     public static final String MSG_EMPTY_REGISTERS = "Não existem clientes cadastrados...";
     public static final String MSG_COMENTARIOS = "escreva aqui o seu comentário...";
+    public static final String LB_ID = "id";
     public static final String LB_NOME = "nome";
     public static final String LB_IDADE = "idade";
+    public static final String LB_COMENTARIO = "comentario";
 }
