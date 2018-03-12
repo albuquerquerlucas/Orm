@@ -48,10 +48,11 @@ public class RecoveryFragment extends Fragment {
                 int idCliente = clientes.get(position).getId();
                 String nome = clientes.get(position).getNome();
                 int idade = clientes.get(position).getIdade();
+                String email = clientes.get(position).getEmail();
                 String comentario = clientes.get(position).getComentario();
 
                 Fragment fragment = new DetailsFragment();
-                fragment.setArguments(passParams(idCliente,  nome, idade, comentario));
+                fragment.setArguments(passParams(idCliente,  nome, idade, email, comentario));
                 FragmentManager fm = getFragmentManager();
                 fm.beginTransaction().replace(R.id.frame_content, fragment).commit();
             }
@@ -70,11 +71,12 @@ public class RecoveryFragment extends Fragment {
         }
     }
 
-    private Bundle passParams(int id, String nome, int idade, String comentario){
+    private Bundle passParams(int id, String nome, int idade, String email, String comentario){
         Bundle params = new Bundle();
         params.putString(Constants.LB_ID, String.valueOf(id));
         params.putString(Constants.LB_NOME, nome);
         params.putString(Constants.LB_IDADE, String.valueOf(idade));
+        params.putString(Constants.LB_EMAIL, email);
         params.putString(Constants.LB_COMENTARIO, comentario);
         return params;
     }
