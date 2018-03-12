@@ -18,7 +18,7 @@ import br.com.prot.orm.util.Constants;
 
 public class DetailsFragment extends Fragment {
 
-    private TextView txtNome, txtIdade, txtSalvar, txtCancelar, txtEditar;
+    private TextView txtNome, txtIdade, txtEmail, txtSalvar, txtCancelar, txtEditar;
     private EditText edt_comentarios;
     private ImageView imgReturn;
     private ClienteDAO dao = null;
@@ -36,6 +36,7 @@ public class DetailsFragment extends Fragment {
             idClienteBD = Integer.parseInt(args.getString(Constants.LB_ID));
             this.txtNome.setText(args.getString(Constants.LB_NOME));
             this.txtIdade.setText(args.getString(Constants.LB_IDADE));
+            this.txtEmail.setText(args.getString(Constants.LB_EMAIL));
             this.edt_comentarios.setText(args.getString(Constants.LB_COMENTARIO));
         }
 
@@ -45,6 +46,7 @@ public class DetailsFragment extends Fragment {
     private void initUi(View view){
         this.txtNome = (TextView) view.findViewById(R.id.txt_nome);
         this.txtIdade = (TextView) view.findViewById(R.id.txt_idade);
+        this.txtEmail = (TextView) view.findViewById(R.id.txt_email);
         this.edt_comentarios = (EditText) view.findViewById(R.id.edt_comentarios);
         this.txtSalvar = (TextView) view.findViewById(R.id.txt_save_comentario);
         this.txtCancelar = (TextView) view.findViewById(R.id.txt_cancel);
