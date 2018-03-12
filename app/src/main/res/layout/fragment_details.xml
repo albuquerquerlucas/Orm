@@ -47,11 +47,33 @@
 
     <LinearLayout
         android:id="@+id/linear_03"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linear_02">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="E-mail: "/>
+
+        <TextView
+            android:id="@+id/txt_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text=""
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_04"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:padding="5dp"
-        android:layout_below="@+id/linear_02"
+        android:layout_below="@+id/linear_03"
         android:background="@drawable/comentarios_background">
 
         <TextView
@@ -114,5 +136,5 @@
         android:layout_height="wrap_content"
         android:padding="16dp"
         android:src="@drawable/ic_keyboard_return_black_24dp"
-        android:layout_below="@+id/linear_03"/>
+        android:layout_below="@+id/linear_04"/>
 </RelativeLayout>
