@@ -3,7 +3,6 @@ package br.com.prot.orm.ui.fragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,14 +10,13 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import br.com.prot.orm.R;
 import br.com.prot.orm.entity.Cliente;
 import br.com.prot.orm.persistence.dao.ClienteDAO;
 import br.com.prot.orm.ui.adapters.ClienteAdapter;
-import br.com.prot.orm.util.Constatnts;
+import br.com.prot.orm.util.Constants;
 
 public class RecoveryFragment extends Fragment {
 
@@ -68,16 +66,16 @@ public class RecoveryFragment extends Fragment {
             this.adapter = new ClienteAdapter(getContext(), clientes);
             this.listaClientes.setAdapter(adapter);
         }else{
-            this.txtMsg.setText(Constatnts.MSG_EMPTY_REGISTERS);
+            this.txtMsg.setText(Constants.MSG_EMPTY_REGISTERS);
         }
     }
 
     private Bundle passParams(int id, String nome, int idade, String comentario){
         Bundle params = new Bundle();
-        params.putString(Constatnts.LB_ID, String.valueOf(id));
-        params.putString(Constatnts.LB_NOME, nome);
-        params.putString(Constatnts.LB_IDADE, String.valueOf(idade));
-        params.putString(Constatnts.LB_COMENTARIO, comentario);
+        params.putString(Constants.LB_ID, String.valueOf(id));
+        params.putString(Constants.LB_NOME, nome);
+        params.putString(Constants.LB_IDADE, String.valueOf(idade));
+        params.putString(Constants.LB_COMENTARIO, comentario);
         return params;
     }
 }

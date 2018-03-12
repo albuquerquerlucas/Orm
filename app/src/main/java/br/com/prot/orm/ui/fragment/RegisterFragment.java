@@ -12,6 +12,7 @@ import android.widget.Toast;
 import br.com.prot.orm.R;
 import br.com.prot.orm.entity.Cliente;
 import br.com.prot.orm.persistence.dao.ClienteDAO;
+import br.com.prot.orm.util.Constants;
 
 public class RegisterFragment extends Fragment implements View.OnClickListener {
 
@@ -56,18 +57,19 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
 
     private void saveCliente(){
 
-        if(this.edtNome.getText().toString().equals("")){this.edtNome.setError("Informe o nome."); return;}
-        if(this.edtIdade.getText().toString().equals("")){this.edtIdade.setError("informe a idade."); return;}
+        if(this.edtNome.getText().toString().equals("")){this.edtNome.setError(Constants.HINT_INPUT_NOME); return;}
+        if(this.edtIdade.getText().toString().equals("")){this.edtIdade.setError(Constants.HINT_INPUT_IDADE); return;}
 
         Cliente cliente = new Cliente();
         cliente.setNome(edtNome.getText().toString());
         cliente.setIdade(Integer.parseInt(edtIdade.getText().toString()));
+        cliente.setComentario("");
 
         boolean status = this.dao.insert(cliente);
 
         if(status){
             configComponents();
-            Toast.makeText(getContext(), "Salvo com sucesso!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), Constants.MSG_SAVE_SUCESS, Toast.LENGTH_SHORT).show();
         }
     }
 }
