@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import br.com.prot.orm.R;
+import br.com.prot.orm.entity.Cliente;
+import br.com.prot.orm.persistence.dao.ClienteDAO;
 import br.com.prot.orm.util.Constatnts;
 
 public class DetailsFragment extends Fragment {
@@ -19,16 +21,22 @@ public class DetailsFragment extends Fragment {
     private TextView txtNome, txtIdade, txtSalvar, txtCancelar, txtEditar;
     private EditText edt_comentarios;
     private ImageView imgReturn;
+    private ClienteDAO dao = null;
+    private int idClienteBD;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_details, container, false);
+
+        this.dao = new ClienteDAO(view.getContext());
         Bundle args = getArguments();
         initUi(view);
 
         if(args != null){
+            idClienteBD = Integer.parseInt(args.getString(Constatnts.LB_ID));
             this.txtNome.setText(args.getString(Constatnts.LB_NOME));
             this.txtIdade.setText(args.getString(Constatnts.LB_IDADE));
+            this.edt_comentarios.setText(args.getString(Constatnts.LB_COMENTARIO));
         }
 
         return view;
@@ -58,12 +66,17 @@ public class DetailsFragment extends Fragment {
         });
     }
 
+    private void cursorEndText(){
+        this.edt_comentarios.setSelection(edt_comentarios.getText().length());
+    }
+
     private void editComentario(){
         this.txtEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 edt_comentarios.setEnabled(true);
                 edt_comentarios.requestFocus();
+                cursorEndText();
                 if(edt_comentarios.requestFocus()){
                     txtSalvar.setVisibility(View.VISIBLE);
                     txtCancelar.setVisibility(View.VISIBLE);
@@ -78,7 +91,16 @@ public class DetailsFragment extends Fragment {
         this.txtSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Irá salvar...", Toast.LENGTH_SHORT).show();
+                if(!edt_comentarios.getText().equals("")){
+                    Cliente cli = dao.getById(idClienteBD);
+                    cli.setComentario(edt_comentarios.getText().toString());
+                    boolean status = dao.update(cli);
+                    if(status == true){
+                        mechanicOfProcess();
+                    }else{
+                        Toast.makeText(getContext(), Constatnts.ERR_UPDATE, Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
     }
@@ -86,11 +108,14 @@ public class DetailsFragment extends Fragment {
         this.txtCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                edt_comentarios.setText("");
-                edt_comentarios.setEnabled(false);
-                txtSalvar.setVisibility(View.GONE);
-                txtCancelar.setVisibility(View.GONE);
+                mechanicOfProcess();
             }
         });
+    }
+
+    private void mechanicOfProcess(){
+        edt_comentarios.setEnabled(false);
+        txtSalvar.setVisibility(View.GONE);
+        txtCancelar.setVisibility(View.GONE);
     }
 }
