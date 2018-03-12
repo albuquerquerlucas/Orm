@@ -6,6 +6,10 @@ package br.com.prot.orm.util;
 
 public class Constants {
 
+    public static final String TXT_ALERT_TITLE = "Confirmação";
+    public static final String TXT_ALERT_MSG = "Deseja realmente sair da aplicação?";
+    public static final String TXT_ALERT_POSITIVE_BUTTON = "Sair";
+    public static final String TXT_ALERT_NEGATIVE_BUTTON = "Cancelar";
     public static final String MSG_EMPTY_REGISTERS = "Não existem clientes cadastrados...";
     public static final String MSG_SAVE_SUCESS = "Registro salvo com sucesso!";
     public static final String ERR_UPDATE = "Não foi possível salvar o comentário...";
@@ -15,5 +19,6 @@ public class Constants {
     public static final String LB_ID = "id";
     public static final String LB_NOME = "nome";
     public static final String LB_IDADE = "idade";
+    public static final String LB_EMAIL = "email";
     public static final String LB_COMENTARIO = "comentario";
 }
