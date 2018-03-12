@@ -10,6 +10,8 @@ public class Constants {
     public static final String TXT_ALERT_MSG = "Deseja realmente sair da aplicação?";
     public static final String TXT_ALERT_POSITIVE_BUTTON = "Sair";
     public static final String TXT_ALERT_NEGATIVE_BUTTON = "Cancelar";
+    public static final String TXT_ALERT_MSG_DEL = "Deseja realmente excluir este cliente?";
+    public static final String TXT_ALERT_DEL_POSITIVE_BUTTON = "Excluir";
     public static final String MSG_EMPTY_REGISTERS = "Não existem clientes cadastrados...";
     public static final String MSG_SAVE_SUCESS = "Registro salvo com sucesso!";
     public static final String ERR_UPDATE = "Não foi possível salvar o comentário...";
