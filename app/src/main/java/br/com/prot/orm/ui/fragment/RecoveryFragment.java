@@ -2,9 +2,12 @@ package br.com.prot.orm.ui.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -39,6 +42,16 @@ public class RecoveryFragment extends Fragment {
         this.listaClientes = (ListView) view.findViewById(R.id.lista_clientes);
 
         loadData(view);
+
+        this.listaClientes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Fragment fragment = new DetailsFragment();
+                fragment.setArguments(passParams(clientes.get(position).getNome(), clientes.get(position).getIdade()));
+                FragmentManager fm = getFragmentManager();
+                fm.beginTransaction().replace(R.id.frame_content, fragment).commit();
+            }
+        });
     }
 
     private void loadData(View view){
@@ -51,5 +64,12 @@ public class RecoveryFragment extends Fragment {
         }else{
             this.txtMsg.setText(Constatnts.MSG_EMPTY_REGISTERS);
         }
+    }
+
+    private Bundle passParams(String nome, int idade){
+        Bundle params = new Bundle();
+        params.putString(Constatnts.LB_NOME, nome);
+        params.putString(Constatnts.LB_IDADE, String.valueOf(idade));
+        return params;
     }
 }
