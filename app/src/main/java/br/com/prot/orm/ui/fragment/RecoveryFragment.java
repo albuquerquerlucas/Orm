@@ -1,8 +1,10 @@
 package br.com.prot.orm.ui.fragment;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +27,7 @@ public class RecoveryFragment extends Fragment {
     private ClienteAdapter adapter;
     private List<Cliente> clientes;
     private ClienteDAO dao = null;
+    private int idCli, pos;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -57,6 +60,16 @@ public class RecoveryFragment extends Fragment {
                 fm.beginTransaction().replace(R.id.frame_content, fragment).commit();
             }
         });
+
+        this.listaClientes.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                idCli = clientes.get(position).getId();
+                pos = position;
+                confirmation();
+                return true;
+            }
+        });
     }
 
     private void loadData(View view){
@@ -79,5 +92,30 @@ public class RecoveryFragment extends Fragment {
         params.putString(Constants.LB_EMAIL, email);
         params.putString(Constants.LB_COMENTARIO, comentario);
         return params;
+    }
+
+    private void confirmation(){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
+        alertDialogBuilder.setTitle(Constants.TXT_ALERT_TITLE);
+        alertDialogBuilder.setIcon(R.drawable.ic_info_outline_black_24dp);
+
+        alertDialogBuilder.setMessage(Constants.TXT_ALERT_MSG_DEL).setCancelable(false)
+                .setPositiveButton(Constants.TXT_ALERT_DEL_POSITIVE_BUTTON,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Cliente cli = dao.getById(idCli);
+                                dao.delete(cli);
+                                clientes.remove(pos);
+                                adapter.notifyDataSetChanged();
+                            }
+                        })
+                .setNegativeButton(Constants.TXT_ALERT_NEGATIVE_BUTTON,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 }
