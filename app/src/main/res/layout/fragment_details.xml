@@ -1,13 +1,118 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="br.com.prot.orm.ui.fragment.DetailsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/linear_01"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content">
 
-</FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nome: "/>
+
+        <TextView
+            android:id="@+id/txt_nome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="Lucas Albuquerque"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_02"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linear_01">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Idade: "/>
+
+        <TextView
+            android:id="@+id/txt_idade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text=""
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_03"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_below="@+id/linear_02"
+        android:background="@drawable/comentarios_background">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Comentários: "/>
+
+        <EditText
+            android:id="@+id/edt_comentarios"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:textSize="12dp"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            android:hint="escreva aqui o seu comentário..."
+            android:inputType="textMultiLine"
+            android:gravity="top"
+            android:background="@drawable/edit_background"
+            android:enabled="false"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right">
+
+            <TextView
+                android:id="@+id/txt_save_comentario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="salvar"
+                android:drawablePadding="2dp"
+                android:drawableLeft="@drawable/ic_save_black_16dp"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/txt_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="cancelar"
+                android:drawablePadding="2dp"
+                android:drawableLeft="@drawable/ic_clear_black_24dp"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/txt_editar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:drawablePadding="2dp"
+                android:drawableLeft="@drawable/ic_create_black_24dp"
+                android:text="editar" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/img_return"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:src="@drawable/ic_keyboard_return_black_24dp"
+        android:layout_below="@+id/linear_03"/>
+</RelativeLayout>
