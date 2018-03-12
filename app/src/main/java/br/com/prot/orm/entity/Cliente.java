@@ -21,15 +21,20 @@ public class Cliente implements Serializable {
     private int idade;
 
     @DatabaseField
+    private String email;
+
+    @DatabaseField
     private String comentario;
 
     public Cliente() {
     }
 
-    public Cliente(int id, String nome, int idade) {
+    public Cliente(int id, String nome, int idade, String email, String comentario) {
         this.id = id;
         this.nome = nome;
         this.idade = idade;
+        this.email = email;
+        this.comentario = comentario;
     }
 
     public int getId() {
@@ -54,6 +59,14 @@ public class Cliente implements Serializable {
 
     public void setIdade(int idade) {
         this.idade = idade;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getComentario() {
