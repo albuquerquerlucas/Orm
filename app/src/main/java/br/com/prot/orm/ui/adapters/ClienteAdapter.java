@@ -51,15 +51,20 @@ public class ClienteAdapter extends BaseAdapter {
         rowView = inflater.inflate(R.layout.item_lista, null);
 
         holder.txtCliente = (TextView) rowView.findViewById(R.id.txt_cliente);
+        holder.txtEmail = (TextView) rowView.findViewById(R.id.txt_email);
+
         holder.txtCliente.setText(
-                clientes.get(position).getNome() + ", " +
-                clientes.get(position).getIdade() + " anos."
+                new StringBuilder(clientes.get(position).getNome() + ", " +
+                        clientes.get(position).getIdade() + " anos.")
         );
+
+        holder.txtEmail.setText(clientes.get(position).getEmail());
 
         return rowView;
     }
 
     public class ViewHolder{
         TextView txtCliente;
+        TextView txtEmail;
     }
 }
