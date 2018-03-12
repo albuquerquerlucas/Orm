@@ -8,8 +8,10 @@
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/txt_details"
         android:gravity="center_vertical">
 
         <ImageView
@@ -17,17 +19,31 @@
             android:layout_height="match_parent"
             android:src="@drawable/ic_person_black_24dp"/>
 
-        <TextView
-            android:id="@+id/txt_cliente"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="8dp"
-            android:text=""
-            android:textStyle="bold"
-            android:gravity="center_vertical"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp">
+
+            <TextView
+                android:id="@+id/txt_cliente"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text=""
+                android:textStyle="bold"
+                android:gravity="center_vertical"/>
+
+            <TextView
+                android:id="@+id/txt_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textStyle="italic"/>
+        </LinearLayout>
     </LinearLayout>
 
     <TextView
+        android:id="@+id/txt_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:drawableTop="@drawable/ic_remove_red_eye_black_24dp"
