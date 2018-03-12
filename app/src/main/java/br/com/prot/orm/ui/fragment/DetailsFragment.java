@@ -51,8 +51,6 @@ public class DetailsFragment extends Fragment {
         this.txtEditar = (TextView) view.findViewById(R.id.txt_editar);
         this.imgReturn = (ImageView) view.findViewById(R.id.img_return);
 
-        this.edt_comentarios.setText(Constants.MSG_COMENTARIOS);
-
         callFragList();
         editComentario();
     }
