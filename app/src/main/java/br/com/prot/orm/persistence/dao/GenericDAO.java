@@ -44,12 +44,15 @@ public abstract class GenericDAO<T> extends Helper<T> {
         return status;
     }
 
-    public void update(T obj) {
+    public boolean update(T obj) {
+        boolean status = false;
         try{
             dao.update(obj);
+            status = true;
         }catch(Exception e){
             e.printStackTrace();
         }
+        return status;
     }
 
     public void delete(T obj) {
