@@ -53,10 +53,8 @@ public class ClienteAdapter extends BaseAdapter {
         holder.txtCliente = (TextView) rowView.findViewById(R.id.txt_cliente);
         holder.txtEmail = (TextView) rowView.findViewById(R.id.txt_email);
 
-        holder.txtCliente.setText(
-                new StringBuilder(clientes.get(position).getNome() + ", " +
-                        clientes.get(position).getIdade() + " anos.")
-        );
+        String texto = clientes.get(position).getNome() + ", " + clientes.get(position).getIdade() + " anos.";
+        holder.txtCliente.setText(texto);
 
         holder.txtEmail.setText(clientes.get(position).getEmail());
 
