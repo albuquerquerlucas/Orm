@@ -46,8 +46,14 @@ public class RecoveryFragment extends Fragment {
         this.listaClientes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                int idCliente = clientes.get(position).getId();
+                String nome = clientes.get(position).getNome();
+                int idade = clientes.get(position).getIdade();
+                String comentario = clientes.get(position).getComentario();
+
                 Fragment fragment = new DetailsFragment();
-                fragment.setArguments(passParams(clientes.get(position).getNome(), clientes.get(position).getIdade()));
+                fragment.setArguments(passParams(idCliente,  nome, idade, comentario));
                 FragmentManager fm = getFragmentManager();
                 fm.beginTransaction().replace(R.id.frame_content, fragment).commit();
             }
@@ -66,10 +72,12 @@ public class RecoveryFragment extends Fragment {
         }
     }
 
-    private Bundle passParams(String nome, int idade){
+    private Bundle passParams(int id, String nome, int idade, String comentario){
         Bundle params = new Bundle();
+        params.putString(Constatnts.LB_ID, String.valueOf(id));
         params.putString(Constatnts.LB_NOME, nome);
         params.putString(Constatnts.LB_IDADE, String.valueOf(idade));
+        params.putString(Constatnts.LB_COMENTARIO, comentario);
         return params;
     }
 }
