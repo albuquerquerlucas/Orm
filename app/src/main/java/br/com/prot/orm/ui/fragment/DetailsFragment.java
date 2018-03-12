@@ -14,7 +14,7 @@ import android.widget.Toast;
 import br.com.prot.orm.R;
 import br.com.prot.orm.entity.Cliente;
 import br.com.prot.orm.persistence.dao.ClienteDAO;
-import br.com.prot.orm.util.Constatnts;
+import br.com.prot.orm.util.Constants;
 
 public class DetailsFragment extends Fragment {
 
@@ -33,10 +33,10 @@ public class DetailsFragment extends Fragment {
         initUi(view);
 
         if(args != null){
-            idClienteBD = Integer.parseInt(args.getString(Constatnts.LB_ID));
-            this.txtNome.setText(args.getString(Constatnts.LB_NOME));
-            this.txtIdade.setText(args.getString(Constatnts.LB_IDADE));
-            this.edt_comentarios.setText(args.getString(Constatnts.LB_COMENTARIO));
+            idClienteBD = Integer.parseInt(args.getString(Constants.LB_ID));
+            this.txtNome.setText(args.getString(Constants.LB_NOME));
+            this.txtIdade.setText(args.getString(Constants.LB_IDADE));
+            this.edt_comentarios.setText(args.getString(Constants.LB_COMENTARIO));
         }
 
         return view;
@@ -50,6 +50,8 @@ public class DetailsFragment extends Fragment {
         this.txtCancelar = (TextView) view.findViewById(R.id.txt_cancel);
         this.txtEditar = (TextView) view.findViewById(R.id.txt_editar);
         this.imgReturn = (ImageView) view.findViewById(R.id.img_return);
+
+        this.edt_comentarios.setText(Constants.MSG_COMENTARIOS);
 
         callFragList();
         editComentario();
@@ -98,7 +100,7 @@ public class DetailsFragment extends Fragment {
                     if(status == true){
                         mechanicOfProcess();
                     }else{
-                        Toast.makeText(getContext(), Constatnts.ERR_UPDATE, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), Constants.ERR_UPDATE, Toast.LENGTH_SHORT).show();
                     }
                 }
             }
